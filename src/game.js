@@ -21,7 +21,7 @@ class Game {
     if (this._board.playerBoard[rowIndex][columnIndex] === 'B') {
       console.log('Game Over! Final Board:');
       this._board.print();
-    } else if (!this._board.hasNonBombEmptySpaces()) {
+    } else if (!this._board.hasSafeTiles()) {
       console.log('Congratulations, you won!');
     } else {
       console.log('Current board:');

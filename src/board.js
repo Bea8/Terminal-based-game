@@ -2,7 +2,7 @@ export class Board {
   constructor(numberOfRows, numberOfColumns, numberOfBombs) {
     this._numberOfBombs = numberOfBombs;
 
-    this._numberOfEmptySpaces = numberOfRows * numberOfColumns;
+    this._safeTiles = numberOfRows * numberOfColumns;
     this._playerBoard = Board.generatePlayerBoard(numberOfRows, numberOfColumns);
     this._bombBoard = Board.generateBombBoard(numberOfRows, numberOfColumns, numberOfBombs);
   }
@@ -20,7 +20,7 @@ export class Board {
     } else {
       this._playerBoard[rowIndex][columnIndex] = this.getNumberOfNeighborBombs(rowIndex, columnIndex);
     }
-    this._numberOfEmptySpaces--;
+    this._safeTiles--;
   }
 
   getNumberOfNeighborBombs(rowIndex, columnIndex) {
@@ -55,8 +55,8 @@ export class Board {
     return numberOfBombs;
   }
 
-  hasNonBombEmptySpaces() {
-    return this._numberOfEmptySpaces !== this._numberOfBombs;
+  hasSafeTiles() {
+    return this._safeTiles !== this._numberOfBombs;
   }
 
   print() {
